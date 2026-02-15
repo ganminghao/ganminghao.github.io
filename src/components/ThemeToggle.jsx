@@ -8,9 +8,9 @@ const ThemeToggle = ({ theme, toggleTheme }) => {
       onClick={toggleTheme}
       initial={false}
       animate={{
-        backgroundColor: theme === 'light' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(29, 29, 31, 0.8)',
+        backgroundColor: theme === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.1)',
       }}
-      className="fixed top-8 right-8 z-50 p-3 rounded-full glass-card hover:scale-110 active:scale-90 transition-transform duration-300 shadow-lg border border-black/[0.08] dark:border-white/[0.12]"
+      className="fixed top-3 right-6 z-50 p-2 rounded-full hover:scale-110 active:scale-90 transition-transform duration-300 border border-black/[0.05] dark:border-white/[0.1]"
       aria-label="Toggle Theme"
     >
       <div className="relative w-6 h-6 flex items-center justify-center overflow-hidden">
