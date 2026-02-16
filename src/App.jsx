@@ -38,13 +38,15 @@ const WEBSITE_DATA = {
         university: "The University of Hong Kong",
         period: "Spring 2026",
         degree: "Exchange Student",
-        school: "Department of Engineering"
+        school: "School of Computing and Data Science",
+        schoolLink: "https://www.cds.hku.hk/"
       },
       {
         university: "Sun Yat-sen University",
         period: "2023 — 2027 (Expected)",
         degree: "B.E. in Software Engineering",
         school: "School of Software Engineering",
+        schoolLink: "https://sse.sysu.edu.cn/",
         courses: {
           label: "Relevant Courses",
           list: "Data Structures and Algorithms, Operating Systems, Computer Architecture, Distributed Systems, Deep Learning, Natural Language Processing"
@@ -214,7 +216,20 @@ function App() {
                     <span className="text-sm font-semibold px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-500">{edu.period}</span>
                   </div>
                   <p className="text-lg font-medium text-gray-700 dark:text-gray-300">{edu.degree}</p>
-                  <p className="text-gray-500 dark:text-gray-500 mb-4">{edu.school}</p>
+                  <p className="text-gray-500 dark:text-gray-500 mb-4">
+                    {edu.schoolLink ? (
+                      <a
+                        href={edu.schoolLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline decoration-2 underline-offset-4"
+                      >
+                        {edu.school}
+                      </a>
+                    ) : (
+                      edu.school
+                    )}
+                  </p>
                   {(edu.courses || edu.standing) && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                       {edu.courses && (

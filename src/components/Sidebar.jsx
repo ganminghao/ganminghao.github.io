@@ -55,7 +55,7 @@ const Sidebar = () => {
       </div>
 
       <div className="w-full max-w-xs lg:max-w-none text-sm text-gray-400 dark:text-gray-500 text-center lg:text-left">
-        Last updated: 2026-02-15
+        Last updated: 2026-02-16
       </div>
     </div>
   );
