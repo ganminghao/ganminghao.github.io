@@ -22,6 +22,7 @@ const WEBSITE_DATA = {
     id: "updates",
     title: "What's New",
     items: [
+      { date: "Mar 2026", content: "My first paper got accepted by OSDI'26!!!" },
       { date: "Jan 2026", content: "Awarded Fung Scholarship." },
       { date: "Jan 2026", content: "Joined NAISS Lab in HKU, directed by Prof. Shinan Liu." },
       { date: "Jan 2026", content: "Started my exchange student program in University of Hong Kong." },
@@ -94,11 +95,11 @@ const WEBSITE_DATA = {
     title: "Research Experience",
     items: [
       {
-        project: "KV Cache Communication Agents System",
+        project: "Agent Infra Exploration",
         lab: "NAISS Lab, The University of Hong Kong",
         period: "Jan. 2026 – Present",
         description:
-          "Working on low-latency agent systems via KV-cache communication. I design KV-cache-based agent frameworks to minimize redundant text-to-text computation, build on LMCache to optimize agent systems through advanced pipeline scheduling and dynamic storage routing, and engineer KV-cache knowledge fusers and specialized fusion modules to enable high-fidelity inter-LLM communication via cache states, improving throughput while preserving rich latent information."
+          "Research Intern (supervised by Prof. Shinan Liu). I am currently exploring optimization opportunities in LLM serving infrastructure for agentic workflows. Current directions include: investigating cross-architecture and positional KV cache reuse to eliminate redundant prefill computation; exploring scheduling optimizations that exploit KV cache idle periods from tool-call latency to improve throughput; and analyzing phase-aware KV cache quantization to understand accuracy degradation in long-context agent scenarios."
       },
       {
         project: "Low Latency LLM Inference System on Consumer-grade GPUs",
@@ -106,7 +107,7 @@ const WEBSITE_DATA = {
         period: "Nov. 2024 – Dec. 2025",
         link: "https://github.com/ganminghao/SparkInfer",
         description:
-          "Focusing on low-latency LLM inference on consumer-grade GPUs via activation sparsity. I implemented sparse inference features in the Llama.cpp framework to reduce computation and memory/IO overhead, optimized a hybrid pipeline that enables asynchronous GPU–CPU execution with on-the-fly weight I/O, and developed custom CUDA kernels for sparse matrix multiplication, achieving about 2× throughput speedup over state-of-the-art systems, with the work submitted to OSDI 2026."
+          "Research Intern (supervised by Prof. Wuhui Chen), developing a low-latency LLM inference system on consumer-grade GPUs via activation sparsity. I designed a bottleneck-aware neuron caching policy to maximize GPU workload in sparse computation, optimized a hybrid pipeline enabling asynchronous GPU–CPU execution with on-the-fly weight I/O, and developed custom CUDA kernels for sparse matrix multiplication, achieving up to 3.7× throughput speedup over state-of-the-art systems; the work was accepted by OSDI 2026."
       }
     ]
   },
@@ -115,9 +116,9 @@ const WEBSITE_DATA = {
     title: "Publications",
     items: [
       {
-        title: "KAIROX: Adaptive GPU-CPU Hybrid LLM Inference via Online Neuron Balancing",
-        venue: "OSDI 2026 (under submission)",
-        note: "Currently in double-blind review; no public preprint available yet."
+        title: "Kairox: Adaptive GPU-CPU Hybrid LLM Inference via Online Neuron Balancing",
+        venue: "OSDI 26",
+        authors: "Yapeng Jiang, Minghao Gan, Zicong Hong, Wuhui Chen, Junyuan Liang, Yue Yu, Meng Guo, Zibin Zheng"
       }
     ],
     emptyMessage: "More work in progress."
@@ -314,7 +315,10 @@ function App() {
             </div>
           </Section>
 
-          <Section id={WEBSITE_DATA.publications.id} title={WEBSITE_DATA.publications.title}>
+          <Section
+            id={WEBSITE_DATA.publications.id}
+            title={WEBSITE_DATA.publications.title}
+          >
             {WEBSITE_DATA.publications.items && WEBSITE_DATA.publications.items.length > 0 ? (
               <div className="space-y-4 py-2">
                 {WEBSITE_DATA.publications.items.map((pub, i) => (
@@ -322,22 +326,29 @@ function App() {
                     key={i}
                     className="p-4 rounded-2xl bg-white/40 dark:bg-white/[0.02] border border-black/[0.03] dark:border-white/[0.03]"
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-                      <div>
-                        <div className="font-semibold text-black dark:text-white">
-                          {pub.title}
+                    <div className="min-w-0">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="min-w-0 font-semibold text-black dark:text-white">
+                          <a href="/osdi26-paper1769.pdf" target="_blank" rel="noopener noreferrer" className="hover:underline decoration-2 underline-offset-4">
+                            {pub.title}
+                          </a>
                         </div>
                         {pub.venue && (
-                          <div className="text-sm text-gray-600 dark:text-gray-400">
+                          <div className="shrink-0 text-right font-bold text-black dark:text-white">
                             {pub.venue}
                           </div>
                         )}
-                        {pub.note && (
-                          <div className="text-xs text-gray-500 dark:text-gray-500 italic mt-1">
-                            {pub.note}
-                          </div>
-                        )}
                       </div>
+                      {pub.authors && (
+                        <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                          {pub.authors}
+                        </div>
+                      )}
+                      {pub.note && (
+                        <div className="text-xs text-gray-500 dark:text-gray-500 italic mt-1">
+                          {pub.note}
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}

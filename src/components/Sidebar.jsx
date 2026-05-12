@@ -32,7 +32,7 @@ const Sidebar = () => {
           <span className="font-medium">github.com/ganminghao</span>
         </a>
         <a
-          href="/Gan_Minghao_resume2.27.pdf"
+          href="/Gan_Minghao_CV.pdf"
           download
           className="group flex items-center space-x-4 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-300"
         >
@@ -55,7 +55,7 @@ const Sidebar = () => {
       </div>
 
       <div className="w-full max-w-xs lg:max-w-none text-sm text-gray-400 dark:text-gray-500 text-center lg:text-left">
-        Last updated: 2026-02-27
+        Last updated: 2026-04-11
       </div>
     </div>
   );
