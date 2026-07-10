@@ -22,7 +22,7 @@ const WEBSITE_DATA = {
     id: "updates",
     title: "What's New",
     items: [
-      { date: "Mar 2026", content: "My first paper got accepted by OSDI'26!!!" },
+      { date: "Mar 2026", content: "My first paper got accepted by OSDI'26, See you in Seattle!!!" },
       { date: "Jan 2026", content: "Awarded Fung Scholarship." },
       { date: "Jan 2026", content: "Joined NAISS Lab in HKU, directed by Prof. Shinan Liu." },
       { date: "Jan 2026", content: "Started my exchange student program in University of Hong Kong." },
@@ -99,7 +99,7 @@ const WEBSITE_DATA = {
         lab: "NAISS Lab, The University of Hong Kong",
         period: "Jan. 2026 – Present",
         description:
-          "Research Intern (supervised by Prof. Shinan Liu). I am currently exploring optimization opportunities in LLM serving infrastructure for agentic workflows. Current directions include: investigating cross-architecture and positional KV cache reuse to eliminate redundant prefill computation; exploring scheduling optimizations that exploit KV cache idle periods from tool-call latency to improve throughput; and analyzing phase-aware KV cache quantization to understand accuracy degradation in long-context agent scenarios."
+          "Research Intern (supervised by Prof. Shinan Liu). I am currently exploring optimization opportunities in LLM serving infrastructure for agentic workflows. Current directions include: investigating cross-architecture and positional KV cache reuse to eliminate redundant prefill computation; exploring scheduling optimizations that exploit KV cache idle periods from tool-call latency to improve throughput; and analyzing phase-aware KV cache quantization to understand accuracy degradation in long-context agent scenarios. Developing a general backend for mixed-precision KV Cache computation to support phase-aware KV Cache quantization in long-context agentic inference."
       },
       {
         project: "Low Latency LLM Inference System on Consumer-grade GPUs",
