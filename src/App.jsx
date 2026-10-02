@@ -16,12 +16,14 @@ const WEBSITE_DATA = {
       and: "and",
       highlight2: "MLSys"
     },
-    description: "Hello! I am Minghao Gan (甘明昊), a third-year undergraduate student at Sun Yat-sen University, currently participating in an exchange program at the University of Hong Kong. My research interests lie in developing low-latency Large Language Model (LLM) inference systems and optimizing scalable AI agent frameworks."
+    description: "Hello! I am Minghao Gan (甘明昊), a final-year undergraduate student at Sun Yat-sen University. I spent Spring 2026 as an exchange student at the University of Hong Kong, and I continue to work there as a Research Assistant in NAISS Lab. My research interests lie in developing low-latency Large Language Model (LLM) inference systems and optimizing scalable AI agent frameworks."
   },
   updates: {
     id: "updates",
     title: "What's New",
     items: [
+      { date: "Oct 2026", content: "Awarded the National Scholarship again." },
+      { date: "Aug 2026", content: "Continue working as a Research Assistant in NAISS Lab, HKU." },
       { date: "Mar 2026", content: "My first paper got accepted by OSDI'26, See you in Seattle!!!" },
       { date: "Jan 2026", content: "Awarded Fung Scholarship." },
       { date: "Jan 2026", content: "Joined NAISS Lab in HKU, directed by Prof. Shinan Liu." },
@@ -37,7 +39,7 @@ const WEBSITE_DATA = {
     items: [
       {
         university: "The University of Hong Kong",
-        period: "Spring 2026",
+        period: "Jan 2026 — May 2026",
         degree: "Exchange Student",
         school: "School of Computing and Data Science",
         schoolLink: "https://www.cds.hku.hk/"
@@ -54,7 +56,7 @@ const WEBSITE_DATA = {
         },
         standing: {
           label: "Academic Standing",
-          value: ["GPA: 4.2 / 5.0", "Ranking: 10 / 243 (Top 4.3%)"]
+          value: ["GPA: 4.2 / 5.0", "Ranking: 10 / 231 (Top 5%)"]
         }
       }
     ]
@@ -64,19 +66,19 @@ const WEBSITE_DATA = {
     title: "Scholarships & Awards",
     items: [
       {
-        name: "National Scholarship for Undergraduates",
+        name: "National Scholarship for Undergraduates (twice)",
         issuer: "Ministry of Education of China",
-        years: "2023"
+        years: "2026, 2023"
       },
       {
-        name: "First Prize, Outstanding Student Scholarship",
+        name: "First Prize, Outstanding Student Scholarship (twice)",
         issuer: "Sun Yat-sen University",
-        years: "2023"
+        years: "2026, 2023"
       },
       {
-        name: "Special Scholarship",
-        issuer: "School of Software Engineering, Sun Yat-sen University",
-        years: "2023"
+        name: "Fung Scholarship",
+        issuer: "Fung Foundation & The University of Hong Kong",
+        years: "2025"
       },
       {
         name: "Second Prize, Outstanding Student Scholarship",
@@ -84,9 +86,9 @@ const WEBSITE_DATA = {
         years: "2024"
       },
       {
-        name: "Fung Scholarship",
-        issuer: "Fung Foundation & The University of Hong Kong",
-        years: "2025"
+        name: "Special Scholarship",
+        issuer: "School of Software Engineering, Sun Yat-sen University",
+        years: "2023"
       }
     ]
   },
@@ -95,19 +97,33 @@ const WEBSITE_DATA = {
     title: "Research Experience",
     items: [
       {
-        project: "Agent Infra Exploration",
         lab: "NAISS Lab, The University of Hong Kong",
-        period: "Jan. 2026 – Present",
-        description:
-          "Research Intern (supervised by Prof. Shinan Liu). I am currently exploring optimization opportunities in LLM serving infrastructure for agentic workflows. Current directions include: investigating cross-architecture and positional KV cache reuse to eliminate redundant prefill computation; exploring scheduling optimizations that exploit KV cache idle periods from tool-call latency to improve throughput; and analyzing phase-aware KV cache quantization to understand accuracy degradation in long-context agent scenarios. Developing a general backend for mixed-precision KV Cache computation to support phase-aware KV Cache quantization in long-context agentic inference."
+        role: "Research Assistant, advised by Prof. Shinan Liu",
+        location: "Hong Kong",
+        period: "Jan. 2026 \u2013 Present",
+        bullets: [
+          {
+            title: "Mixed-precision KV cache serving for long-context inference.",
+            text: "Existing mixed-precision KV cache systems rely on custom attention kernels and lag behind vLLM/SGLang. Building a serving backend with a slab-based memory pool and an attention wrapper that reuses native kernels per precision and merges outputs via log-sum-exp, deployed as a vLLM/SGLang plugin supporting multiple KV cache quantization algorithms."
+          },
+          {
+            title: "Other explorations.",
+            text: "Cross-architecture and positional KV cache reuse to cut redundant prefill in multi-turn agent interactions; scheduling that reclaims KV cache idle periods caused by tool-call latency."
+          }
+        ]
       },
       {
-        project: "Low Latency LLM Inference System on Consumer-grade GPUs",
         lab: "InPlus Lab, Sun Yat-sen University",
-        period: "Nov. 2024 – Dec. 2025",
-        link: "https://github.com/ganminghao/SparkInfer",
-        description:
-          "Research Intern (supervised by Prof. Wuhui Chen), developing a low-latency LLM inference system on consumer-grade GPUs via activation sparsity. I designed a bottleneck-aware neuron caching policy to maximize GPU workload in sparse computation, optimized a hybrid pipeline enabling asynchronous GPU–CPU execution with on-the-fly weight I/O, and developed custom CUDA kernels for sparse matrix multiplication, achieving up to 3.7× throughput speedup over state-of-the-art systems; the work was accepted by OSDI 2026."
+        role: "Research Intern, advised by Prof. Wuhui Chen",
+        location: "Guangzhou, China",
+        period: "Nov. 2024 \u2013 Dec. 2025",
+        bullets: [
+          {
+            title: "KAIROX: GPU\u2013CPU hybrid LLM inference (USENIX OSDI '26).",
+            link: "https://github.com/ganminghao/SparkInfer",
+            text: "Sparsity-based edge inference systems split neurons between GPU and CPU statically, leaving hardware underutilized. Co-designed bottleneck-aware neuron caching and an asynchronous hybrid pipeline with runtime neuron transfer, and implemented the sparse CUDA kernels, reaching up to 7.57\u00d7 speedup over llama.cpp and 6.35\u00d7 over sparse baselines."
+          }
+        ]
       }
     ]
   },
@@ -116,8 +132,8 @@ const WEBSITE_DATA = {
     title: "Publications",
     items: [
       {
-        title: "Kairox: Adaptive GPU-CPU Hybrid LLM Inference via Online Neuron Balancing",
-        venue: "OSDI 26",
+        title: "KAIROX: Adaptive GPU–CPU Hybrid LLM Inference via Online Neuron Balancing",
+        venue: "USENIX OSDI '26",
         authors: "Yapeng Jiang, Minghao Gan, Zicong Hong, Wuhui Chen, Junyuan Liang, Yue Yu, Meng Guo, Zibin Zheng"
       }
     ],
@@ -282,34 +298,43 @@ function App() {
                 <div key={i} className="relative pl-6 border-l-2 border-black/5 dark:border-white/5">
                   <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-black border-2 border-black/20 dark:border-white/20" />
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-1 sm:gap-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-black dark:text-white">
-                      {item.link ? (
-                        <a
-                          href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:underline decoration-2 underline-offset-4"
-                        >
-                          {item.project}
-                        </a>
-                      ) : (
-                        item.project
-                      )}
-                    </h3>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      {item.lab}
+                    <div>
+                      <h3 className="text-xl font-bold text-black dark:text-white">
+                        {item.lab}
+                      </h3>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">
+                        {item.role}
+                      </div>
+                    </div>
+                    <div className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-right shrink-0">
+                      {item.period && <div>{item.period}</div>}
+                      {item.location && <div>{item.location}</div>}
                     </div>
                   </div>
-                    {item.period && (
-                      <div className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400">
-                        {item.period}
-                      </div>
-                    )}
-                  </div>
-                  <p className="leading-relaxed text-gray-600 dark:text-gray-400">
-                    {item.description}
-                  </p>
+                  <ul className="space-y-3">
+                    {item.bullets.map((b, j) => (
+                      <li key={j} className="flex gap-3 leading-relaxed text-gray-600 dark:text-gray-400">
+                        <span className="mt-[0.6em] w-1.5 h-1.5 rounded-full bg-black/20 dark:bg-white/20 shrink-0" />
+                        <p>
+                          <span className="font-semibold text-black dark:text-white">
+                            {b.link ? (
+                              <a
+                                href={b.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:underline decoration-2 underline-offset-4"
+                              >
+                                {b.title}
+                              </a>
+                            ) : (
+                              b.title
+                            )}
+                          </span>{' '}
+                          {b.text}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
