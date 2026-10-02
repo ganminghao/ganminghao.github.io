@@ -47,7 +47,7 @@ const WEBSITE_DATA = {
       {
         university: "Sun Yat-sen University",
         period: "2023 — 2027 (Expected)",
-        degree: "B.E. in Software Engineering",
+        degree: "B.Eng. in Software Engineering",
         school: "School of Software Engineering",
         schoolLink: "https://sse.sysu.edu.cn/",
         courses: {
@@ -56,7 +56,7 @@ const WEBSITE_DATA = {
         },
         standing: {
           label: "Academic Standing",
-          value: ["GPA: 4.2 / 5.0", "Ranking: 10 / 231 (Top 5%)"]
+          value: ["GPA: 93 / 100", "Ranking: 10 / 231 (Top 5%)"]
         }
       }
     ]
