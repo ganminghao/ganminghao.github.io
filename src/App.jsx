@@ -373,7 +373,14 @@ function App() {
                       </div>
                       {pub.authors && (
                         <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                          {pub.authors}
+                          {pub.authors.split(', ').map((author, index) => (
+                            <React.Fragment key={author}>
+                              {index > 0 && ', '}
+                              {author === 'Minghao Gan' ? (
+                                <span className="underline underline-offset-2">{author}</span>
+                              ) : author}
+                            </React.Fragment>
+                          ))}
                         </div>
                       )}
                       {pub.note && (
