@@ -134,7 +134,7 @@ const WEBSITE_DATA = {
       {
         title: "QuanCache: a Unified Layer for Mixed-Precision KV Caches in LLM Serving",
         venue: "Preprint",
-        authors: "Minghao Gan, Sun He, Yapeng Jiang, Shinan Liu",
+        authors: "Minghao Gan, Sun He, Yapeng Jiang, Chuan Wu, Shinan Liu",
         href: "/publications/quancache/"
       },
       {
