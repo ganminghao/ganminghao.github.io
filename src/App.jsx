@@ -132,6 +132,13 @@ const WEBSITE_DATA = {
     title: "Publications",
     items: [
       {
+        title: "QuanCache: a Unified Layer for Mixed-Precision KV Caches in LLM Serving",
+        venue: "Preprint",
+        authors: "Minghao Gan, Sun He, Yapeng Jiang, Shinan Liu",
+        href: "/publications/quancache/"
+      },
+      {
+        href: "/osdi26-paper1769.pdf",
         title: "KAIROX: Adaptive GPU–CPU Hybrid LLM Inference via Online Neuron Balancing",
         venue: "USENIX OSDI '26",
         authors: "Yapeng Jiang, Minghao Gan, Zicong Hong, Wuhui Chen, Junyuan Liang, Yue Yu, Meng Guo, Zibin Zheng"
@@ -354,7 +361,7 @@ function App() {
                     <div className="min-w-0">
                       <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0 font-semibold text-black dark:text-white">
-                          <a href="/osdi26-paper1769.pdf" target="_blank" rel="noopener noreferrer" className="hover:underline decoration-2 underline-offset-4">
+                          <a href={pub.href} target="_blank" rel="noopener noreferrer" className="hover:underline decoration-2 underline-offset-4">
                             {pub.title}
                           </a>
                         </div>
